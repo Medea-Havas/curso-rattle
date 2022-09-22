@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+  /* colors*/
+  --steelbluelowlight: #2f2940;
+  --skybluelowlight: #00557c;
+  --skyblue: #6bc8f2;
+  --blue: #3961ab;
+  --bluehighlight: #79b0dd;
+  --green: #0697a3;
+  --pinklowlight: #c44186;
+  --pinkhighlight: #dda4cb;
+  --babypink: #f9cbcc;
+  --white: #ffffff;
+  /* sizes */
+  --xxsmall: 0.579rem; /* 9px */
+  --xsmall: 0.694rem; /* 11px */
+  --small: 0.833rem; /* 13px */
+  --regular: 1rem; /* 16px */
+  --medium: 1.2rem; /* 19px */
+  --large: 1.728rem; /* 28px */
+  --xlarge: 2.074rem; /* 33px */
+  --xxlarge: 2.986rem; /* 48px */
+  --xxxlarge: 3.583rem; /* 57px */
+  /* widths */
+  --wlarge: 60rem; /* 960px */
+  /* heights */
+  --hsmall: 1;
+  --hregular: 1.2;
+  --hmedium: 1.5;
+  --hlarge: 1.75;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--steelbluelowlight);
+  background: var(--white);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: var(--hregular);
+  font-size: var(--regular);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  font-family: Inter, sans-serif;
+}

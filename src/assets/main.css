@@ -1,0 +1,35 @@
+@import './base.css';
+
+header,
+main,
+footer {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+main {
+  margin-bottom: 10rem;
+}
+a {
+  color: var(--pinklowlight);
+  text-decoration: none;
+  transition: 0.5s all ease-out;
+}
+a:hover {
+  text-decoration: underline;
+  transition: 0.5s all ease-in;
+}
+#app {
+  font-family: 'Inter', sans-serif;
+}
+.selected.placeholder.error {
+  border: 1px solid red;
+}
+.form-field input.error {
+  border: 1px solid red;
+}
+@media (max-width: 800px) {
+  header {
+    padding: 1rem 2rem;
+  }
+}
