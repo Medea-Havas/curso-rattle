@@ -1,23 +1,14 @@
 <template>
-  <!-- <div class="form-navigation">
-    <nav>
-      <ul>
-        <li><a @click.prevent="toggleForm('login')">Login</a></li>
-        <li><a @click.prevent="toggleForm('register')">Registro</a></li>
-      </ul>
-    </nav>
-  </div> -->
   <div class="grid">
     <div class="left"></div>
     <div class="right">
-      <FormRegister />
-      <!-- <FormLogin v-else /> -->
+      <FormRegister @toggle-form="toggleForm" v-if="register" />
+      <FormLogin @toggle-form="toggleForm" v-else />
     </div>
   </div>
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router';
 import FormRegister from '../components/FormRegister.vue';
 import FormLogin from '../components/FormLogin.vue';
 </script>
@@ -25,9 +16,7 @@ import FormLogin from '../components/FormLogin.vue';
 export default {
   data() {
     return {
-      // register:
-      //   useRoute().query.token == 'y56934tWpo' ||
-      //   useRoute().query.token == 'P39ntg2z88'
+      register: false
     };
   },
   methods: {

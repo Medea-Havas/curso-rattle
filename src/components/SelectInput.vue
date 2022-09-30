@@ -5,7 +5,7 @@
     @blur="open = false"
     @keyup.space="open = true"
   >
-    <label :for="id">{{ label }}</label>
+    <label :for="id" v-html="label"></label>
     <div
       class="selected"
       :class="{ open: open, placeholder: placeholder, error: error }"
@@ -103,19 +103,19 @@ export default {
   border: 1px solid var(--blue);
   color: var(--blue);
   cursor: default;
-  font-size: var(--small);
+  font-size: var(--xsmall);
   padding: 0.5rem 1rem;
   user-select: none;
 }
 .custom-select .selected:after {
-  position: absolute;
-  content: '';
-  top: 40%;
-  right: 1em;
-  width: 0;
-  height: 0;
   border: 5px solid transparent;
   border-color: var(--blue) transparent transparent transparent;
+  content: '';
+  height: 0;
+  position: absolute;
+  right: 1em;
+  top: 40%;
+  width: 0;
 }
 
 .custom-select .selected.open {
@@ -132,7 +132,7 @@ export default {
   border-right: 1px solid var(--blue);
   border-left: 1px solid var(--blue);
   border-bottom: 1px solid var(--blue);
-  font-size: var(--small);
+  font-size: var(--xsmall);
   left: 0;
   max-height: 20rem;
   overflow-y: scroll;

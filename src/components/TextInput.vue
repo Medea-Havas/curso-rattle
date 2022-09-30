@@ -1,6 +1,6 @@
 <template>
   <div class="form-field">
-    <label :for="id">{{ label }}</label>
+    <label :for="id" v-html="label"></label>
     <input
       :id="id"
       :value="modelValue"
@@ -46,7 +46,7 @@ export default {
 .form-field input {
   border: 1px solid var(--blue);
   color: var(--blue);
-  font-size: var(--small);
+  font-size: var(--xsmall);
   padding: 0.5rem 1rem;
   width: 100%;
 }

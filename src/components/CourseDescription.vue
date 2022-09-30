@@ -4,22 +4,30 @@
     <h1>Curso de formación <br />en virus respiratorio sincitial (VRS)</h1>
     <div class="grid">
       <div class="left">
-        <img class="rattle-cover" src="@/assets/img/rattle-cover.jpg" />
+        <img class="rattle-cover" src="@/assets/img/vrs-cover.jpg" />
       </div>
       <div class="right">
         <p>
-          Hoy en día, las complicaciones por infección por el VRS suponen la
-          causa más común de bronquiolitis y neumonia y provocan millones de
-          hospitalizaciones a nivel mundial.
+          El virus respiratorio sincitial (VRS) es un patógeno altamente
+          contagioso que causa gran variedad de afecciones respiratorias,
+          pudiendo afectar a personas de todas las edades, aunque la infección
+          grave tiene lugar en lactantes, principalmente en menores de un año, o
+          en adultos de edad avanzada a partir de los 60 años.
         </p>
         <p>
-          Ante esta realidad, este curso nace para ofrecerte conocimientos,
-          tanto generales como de los últimos avances en el manejo y estrategias
-          de prevención de la infección por VRS; sin olvidarse de fomentar la
-          difusión del conocimiento científico, desarrollar la cooperación
-          profesional entre las diferentes áreas implicadas en el manejo del VRS
-          y promover estrategias de prevención con el objetivo de mejorar la
-          calidad asistencial.
+          Este virus es el principal causante de infecciones de vías
+          respiratorias inferiores en población infantil, como son la
+          bronquiolitis y neumonía, generando una elevada morbilidad y
+          mortalidad en recién nacidos y lactantes a nivel global.
+        </p>
+        <p>
+          Ante esta realidad, este curso nace para ofrecerte conocimientos tanto
+          generales como de los últimos avances en el manejo y prevención de la
+          enfermedad por VRS. También pretende fomentar la difusión del
+          conocimiento científico, desarrollar la cooperación profesional entre
+          las diferentes áreas implicadas en el manejo del VRS y sentar las
+          bases de las futuras estrategias de prevención, con el objetivo de
+          mejorar la calidad asistencial.
         </p>
       </div>
     </div>
@@ -27,23 +35,9 @@
 </template>
 
 <style scoped>
-h1 {
-  font-size: var(--xlarge);
-  line-height: var(--hregular);
-  margin-bottom: 1.875rem;
-  max-width: var(--wlarge);
-}
 .rattle-cover {
   max-width: 45rem;
   width: 100%;
-}
-.subtitle {
-  color: var(--pinkhighlight);
-  font-size: var(--small);
-  letter-spacing: 0.5rem;
-  font-weight: 500;
-  margin-bottom: 1.875rem;
-  text-transform: uppercase;
 }
 .grid {
   display: block;
@@ -63,9 +57,6 @@ h1 {
   margin-bottom: var(--regular);
 }
 @media (min-width: 1207px) {
-  h1 {
-    font-size: var(--xxlarge);
-  }
   .grid {
     display: grid;
     column-gap: 1rem;
@@ -83,11 +74,8 @@ h1 {
   }
 }
 @media (min-width: 1420px) {
-  h1 {
-    font-size: var(--xxxlarge);
-  }
   .right p {
-    font-size: var(--medium);
+    font-size: var(--regular);
   }
 }
 </style>

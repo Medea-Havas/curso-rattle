@@ -17,6 +17,7 @@ export default {
 <style scoped>
 .lines {
   right: 0;
+  margin-bottom: 0.25rem;
   position: absolute;
   top: 2rem;
 }
@@ -24,11 +25,11 @@ export default {
 .lines .second,
 .lines .third {
   height: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   width: 2rem;
 }
 .lines-wrapper {
-  height: 8rem;
+  height: 5rem;
   position: relative;
 }
 @media (min-width: 600px) {
@@ -38,28 +39,25 @@ export default {
   .lines .first,
   .lines .second,
   .lines .third {
-    height: 0.75rem;
-    margin-bottom: 1.25rem;
-    width: 3rem;
+    height: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 2.5rem;
   }
   .lines-wrapper {
-    height: 12rem;
+    height: 8rem;
     position: relative;
   }
 }
 @media (min-width: 1207px) {
   .lines {
-    top: 6rem;
+    top: 3rem;
   }
   .lines .first,
   .lines .second,
   .lines .third {
-    height: 0.95rem;
-    width: 4rem;
-  }
-  .lines-wrapper {
-    height: 17rem;
-    position: relative;
+    height: 0.75rem;
+    margin-bottom: 0.75rem;
+    width: 3rem;
   }
 }
 </style>

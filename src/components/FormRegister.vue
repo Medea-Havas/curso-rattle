@@ -2,8 +2,8 @@
   <div class="register">
     <p class="loader" v-if="loading"><img src="@/assets/img/loader.gif" /></p>
     <p class="warning" v-if="sentForm">
-      ¡Bienvenido {{ user.name }}!<br /><br />
-      Tu registro se ha realizado correctamente. En los próximos días te
+      Hola, {{ user.name }},<br /><br />
+      tu registro se ha realizado correctamente. En los próximos días te
       enviaremos un correo electrónico para poder acceder a la plataforma y
       comenzar con tu formación. Gracias por tu confianza.
     </p>
@@ -86,6 +86,153 @@
           @input="displayToKey($event)"
           @focusout="handleFocusOutSelect($event)"
         />
+        <SelectInput
+          id="province1"
+          label="Provincia donde ejerces<sup>(1)</sup>"
+          :options="[
+            '01-Álava',
+            '02-Albacete',
+            '03-Alicante',
+            '04-Almería',
+            '05-Ávila',
+            '06-Badajoz',
+            '07-Baleares',
+            '08-Barcelona',
+            '09-Burgos',
+            '10-Cáceres',
+            '11-Cádiz',
+            '12-Castellón',
+            '13-Ciudad Real',
+            '14-Córdoba',
+            '15-Coruña',
+            '16-Cuenca',
+            '17-Girona',
+            '18-Granada',
+            '19-Guadalajara',
+            '20-Gipuzkoa',
+            '21-Huelva',
+            '22-Huesca',
+            '23-Jaén',
+            '24-León',
+            '25-Lleida',
+            '26-La Rioja',
+            '27-Lugo',
+            '28-Madrid',
+            '29-Málaga',
+            '30-Murcia',
+            '31-Navarra',
+            '32-Ourense',
+            '33-Asturias',
+            '34-Palencia',
+            '35-Las Palmas',
+            '36-Pontevedra',
+            '37-Salamanca',
+            '38-Santa Cruz de Tenerife',
+            '39-Cantabria',
+            '40-Segovia',
+            '41-Sevilla',
+            '42-Soria',
+            '43-Tarragona',
+            '44-Teruel',
+            '45-Toledo',
+            '46-Valencia',
+            '47-Valladolid',
+            '48-Vizcaya',
+            '49-Zamora',
+            '50-Zaragoza',
+            '51-Ceuta',
+            '52-Melilla'
+          ]"
+          :default="'Provincia donde ejerces'"
+          :placeholder="userProvince1"
+          :error="selectError2"
+          class="select"
+          @input="displayToKey2($event)"
+          @focusout="handleFocusOutSelect($event)"
+        />
+        <SelectInput
+          id="province2"
+          label="Provincia donde te colegiaste<sup>(1)</sup>"
+          :options="[
+            '01-Álava',
+            '02-Albacete',
+            '03-Alicante',
+            '04-Almería',
+            '05-Ávila',
+            '06-Badajoz',
+            '07-Baleares',
+            '08-Barcelona',
+            '09-Burgos',
+            '10-Cáceres',
+            '11-Cádiz',
+            '12-Castellón',
+            '13-Ciudad Real',
+            '14-Córdoba',
+            '15-Coruña',
+            '16-Cuenca',
+            '17-Girona',
+            '18-Granada',
+            '19-Guadalajara',
+            '20-Gipuzkoa',
+            '21-Huelva',
+            '22-Huesca',
+            '23-Jaén',
+            '24-León',
+            '25-Lleida',
+            '26-La Rioja',
+            '27-Lugo',
+            '28-Madrid',
+            '29-Málaga',
+            '30-Murcia',
+            '31-Navarra',
+            '32-Ourense',
+            '33-Asturias',
+            '34-Palencia',
+            '35-Las Palmas',
+            '36-Pontevedra',
+            '37-Salamanca',
+            '38-Santa Cruz de Tenerife',
+            '39-Cantabria',
+            '40-Segovia',
+            '41-Sevilla',
+            '42-Soria',
+            '43-Tarragona',
+            '44-Teruel',
+            '45-Toledo',
+            '46-Valencia',
+            '47-Valladolid',
+            '48-Vizcaya',
+            '49-Zamora',
+            '50-Zaragoza',
+            '51-Ceuta',
+            '52-Melilla'
+          ]"
+          :default="'Provincia donde te colegiaste'"
+          :placeholder="userProvince2"
+          :error="selectError3"
+          class="select"
+          @input="displayToKey3($event)"
+          @focusout="handleFocusOutSelect($event)"
+        />
+        <TextInput
+          id="colnum"
+          label="Número correlativo asignado<sup>(1)</sup>"
+          type="number"
+          placeholder="Número correlativo asignado"
+          v-model="user.colnumber"
+          @input="handleInput"
+          @blur="handleFocusOut('', $event)"
+        />
+        <div class="numberLink">
+          <p>
+            <sup>(1)</sup> Cómo se forma el nº de colegiado nacional
+            <a
+              href="https://www.cgcom.es/configuracion_num_colegiado"
+              target="_blank"
+              >aquí</a
+            >
+          </p>
+        </div>
         <TextInput
           id="password"
           label="Contraseña"
@@ -124,7 +271,7 @@
               href="https://www.sanofi.es/es/politica-de-privacidad"
               target="_blank"
               >política de privacidad</a
-            ></label
+            >{{ resp }}</label
           >
         </div>
         <div class="checkContainer">
@@ -146,6 +293,9 @@
         </div>
       </div>
       <div class="grid2">
+        <button id="login" @click.prevent="$emit('toggleForm', 'login')">
+          Ya tengo cuenta
+        </button>
         <button>Registrarse</button>
       </div>
     </form>
@@ -198,6 +348,8 @@ export default {
     return {
       errors: [],
       selectError: false,
+      selectError2: false,
+      selectError3: false,
       user: {
         email: '',
         name: '',
@@ -205,17 +357,21 @@ export default {
         dni: '',
         work_at: '',
         specialty: '',
+        province1: '',
+        province2: '',
+        colnumber: '',
         password: '',
         confirmPassword: '',
         legal: '',
         optional: '',
-        marketing: ''
+        marketing: false
       },
       sentForm: false,
       loading: false,
       token: useRoute().query.token,
       details: false,
-      visibleSelect: false
+      visibleSelect: false,
+      resp: ''
     };
   },
   components: {
@@ -225,10 +381,17 @@ export default {
     userSpecialty() {
       return this.user.specialty === 'Especialidad';
     },
-    userSpecialtySelected() {
-      return this.user.specialty;
+    userProvince1() {
+      return this.user.province1 === 'Provincia donde ejerces';
+    },
+    userProvince2() {
+      return this.user.province2 === 'Provincia donde te colegiaste';
+    },
+    colnumber() {
+      return this.user.colnumber === 'Número correlativo';
     }
   },
+  emits: ['toggleForm'],
   methods: {
     checkLegal() {
       this.user.legal = !this.user.legal;
@@ -237,8 +400,13 @@ export default {
       this.user.marketing = !this.user.marketing;
     },
     displayToKey(event) {
-      console.log(event);
       this.user.specialty = event;
+    },
+    displayToKey2(event) {
+      this.user.province1 = event;
+    },
+    displayToKey3(event) {
+      this.user.province2 = event;
     },
     formErrors() {
       if (this.user.name == '') {
@@ -262,6 +430,21 @@ export default {
       }
       if (this.user.specialty == '' || this.user.specialty == 'Especialidad') {
         this.errors.push('Especialidad requerida');
+      }
+      if (
+        this.user.province1 == '' ||
+        this.user.province1 == 'Provincia donde ejerces'
+      ) {
+        this.errors.push('Provincia donde ejerces requerida');
+      }
+      if (
+        this.user.province2 == '' ||
+        this.user.province2 == 'Provincia donde te colegiaste'
+      ) {
+        this.errors.push('Provincia donde te colegiaste requerida');
+      }
+      if (this.user.colnumber == 0) {
+        this.errors.push('Número correlativo requerido');
       }
       if (this.user.password == '') {
         this.errors.push('Contraseña requerida');
@@ -306,12 +489,15 @@ export default {
       }
     },
     handleFocusOutSelect(event) {
-      let empty = event.target.children[1].childNodes[0].data == 'Especialidad';
+      let value = event.target.children[1].childNodes[0].data;
+      let empty =
+        value == 'Especialidad' ||
+        value == 'Provincia donde ejerces' ||
+        value == 'Provincia donde te colegiaste';
       if (empty) {
-        event.target.children[1].classList += ' error';
+        event.target.children[1].classList.add('error');
       } else {
-        this.user.specialty = value;
-        event.target.children[1].classList -= ' error';
+        event.target.children[1].classList.remove('error');
       }
     },
     handleInput(event) {
@@ -322,23 +508,27 @@ export default {
       this.errors = [];
       if (!this.formErrors()) {
         this.loading = true;
-        let postUser = {
-          name: this.user.name,
-          last_name: this.user.lastName,
-          email: this.user.email,
-          dni: this.user.dni,
-          work_at: this.user.work_at,
-          specialty: this.user.specialty,
-          password: this.user.password
-        };
         axios
-          .post(this.rattleUrl + '/students/create.php', postUser)
-          .then(function (response) {
-            this.sentForm = true;
-            console.log(response);
+          .post(this.rattleUrl + '/students/create.php', {
+            name: this.user.name,
+            last_name: this.user.lastName,
+            email: this.user.email,
+            dni: this.user.dni,
+            work_at: this.user.work_at,
+            specialty: this.user.specialty,
+            province1: this.user.province1,
+            province2: this.user.province2,
+            colnumber: this.user.colnumber,
+            marketing: this.user.marketing,
+            password: this.user.password
           })
-          .catch(function (error) {
-            console.log(error);
+          .then(response => {
+            this.sentForm = true;
+          })
+          .catch(error => {
+            if (error.response.status == 400) {
+              this.errors.push('La dirección de correo ya está registrada');
+            }
           });
         this.loading = false;
       }
@@ -393,10 +583,11 @@ form {
   display: block;
 }
 button {
-  background: var(--pinkhighlight);
+  background: var(--white);
   border: 1px solid var(--pinkhighlight);
-  color: var(--white);
+  color: var(--pinkhighlight);
   font-weight: 500;
+  font-size: var(--xxsmall);
   grid-column-start: 2;
   letter-spacing: 0.3rem;
   margin: 0.5rem 1rem 1rem;
@@ -405,8 +596,21 @@ button {
   transition: 0.25s all linear;
 }
 button:hover {
-  background: white;
-  color: var(--pinkhighlight);
+  background: var(--pinkhighlight);
+  color: var(--white);
+  cursor: pointer;
+  transition: 0.25s all linear;
+}
+button#login {
+  background: var(--white);
+  border: 1px solid var(--bluehighlight);
+  color: var(--bluehighlight);
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+button#login:hover {
+  background: var(--bluehighlight);
+  color: var(--white);
   cursor: pointer;
   transition: 0.25s all linear;
 }
@@ -515,6 +719,15 @@ input[type='checkbox'] {
 }
 .loader img {
   width: 6rem;
+}
+.numberLink {
+  align-items: center;
+  display: flex;
+}
+.numberLink p {
+  color: var(--skybluelowlight);
+  font-size: var(--small);
+  margin: 0 1rem;
 }
 .right {
   position: relative;

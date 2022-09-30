@@ -1,13 +1,82 @@
 <template>
+  <div class="committeeWrapper">
+    <div class="committee">
+      <p class="subtitle">Comité científico</p>
+      <div class="committee-grid">
+        <div class="committee-member">
+          <img
+            src="@/assets/img/committee/fernando-farinas.png"
+            alt="Dr. Fernando Fariñas"
+          />
+          <p class="name">Dr. Fernando Fariñas</p>
+          <p class="desc">
+            Director del Instituto de Inmunología Clínica y Enfermedades
+            Infecciosas, Málaga
+          </p>
+        </div>
+        <div class="committee-member">
+          <img src="@/assets/img/committee/manuel-sanchez.png" alt="" />
+          <p class="name">Dr. Manuel Sánchez-Luna</p>
+          <p class="desc">
+            Jefe del Servicio de Neonatología del Hospital General Universitario
+            Gregorio Marañón, Madrid
+          </p>
+        </div>
+        <div class="committee-member">
+          <img
+            src="@/assets/img/committee/rosa-rodriguez.png"
+            alt="Dra. Rosa Rodríguez"
+          />
+          <p class="name">Dra. Rosa Rodríguez</p>
+          <p class="desc">
+            Jefa Sección de Pediatría. Hospital General Universitario Gregorio
+            Marañón, Madrid
+          </p>
+        </div>
+        <div class="committee-member">
+          <img
+            src="@/assets/img/committee/antonio-moreno.png"
+            alt="Dr. Antonio Moreno"
+          />
+          <p class="name">Dr. Antonio Moreno</p>
+          <p class="desc">
+            Jefe de la Unidades de Alergia, Neumología Pediátrica y Fibrosis
+            Quística del Hospital Universitario Vall d’Hebron, Barcelona
+          </p>
+        </div>
+        <div class="committee-member">
+          <img
+            src="@/assets/img/committee/mara-garces.png"
+            alt="Dra. Mara Garcés-Sanchez"
+          />
+          <p class="name">Dra. Mara Garcés-Sanchez</p>
+          <p class="desc">
+            Pediatra del Centrode Salud Nazaret de Valencia. Especialista en
+            epidemiología y salud pública del Área de Vacunas, Valencia
+          </p>
+        </div>
+        <div class="committee-member">
+          <img
+            src="@/assets/img/committee/federico-martinon.png"
+            alt="Dr. Federico Martinón-Torres"
+          />
+          <p class="name">Dr. Federico Martinón-Torres</p>
+          <p class="desc">
+            Jefe y coordinador del Servicio de Pediatría del Hospital Clínico
+            Universitario de Santiago de Compostela
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="logos">
+    <div>
+      <p>Una iniciativa de:</p>
+      <img src="@/assets/img/logo-sanofi.svg" alt="Sanofi" />
+    </div>
+  </div>
   <div class="footer-wrap">
     <footer>
-      <!-- <RouterLink to="/" class="logo-link">
-        <Logo />
-      </RouterLink>
-      <span>Copyright &#169; {{ year }}. Medea</span>
-      <div class="social">
-        <a href="https://es.linkedin.com/company/somosmedea"><Linkedin /></a>
-      </div> -->
       <a href="https://www.sanofi.es/es/aviso-legal" target="_blank"
         >Aviso legal</a
       >
@@ -17,20 +86,6 @@
     </footer>
   </div>
 </template>
-
-<script>
-// import Logo from './svg/Logo.vue';
-// import Linkedin from './svg/Linkedin.vue';
-
-export default {
-  // computed: {
-  //   year() {
-  //     return new Date().getFullYear();
-  //   }
-  // },
-  // components: { Logo, Linkedin }
-};
-</script>
 
 <style>
 footer {
@@ -52,75 +107,43 @@ footer a:hover {
   color: var(--pinklowlight);
   transition: 0.2s all ease-in;
 }
+.committee-grid {
+  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  padding: 1rem 0;
+}
+.committee-member {
+  color: var(--steelbluelowlight);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.committee-member img {
+  display: inline-block;
+  margin: 0 auto 1rem;
+  width: 6rem;
+}
+.committee-member .name,
+.committee-member .desc {
+  font-size: var(--small);
+}
+.committee-member .name {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
 .footer-wrap {
   background: var(--steelbluelowlight);
 }
-/* footer > img {
-  width: 6rem;
-}
-span {
-  color: var(--white);
-  display: block;
+.logos {
+  align-items: center;
+  display: flex;
   font-size: var(--small);
-  order: 3;
-  text-align: center;
-  width: 100%;
+  justify-content: center;
+  margin: 2rem 0;
 }
-#linkedin {
-  fill: var(--white);
-  width: 1.5rem;
+.logos img {
+  width: 8.5rem;
 }
-.logo {
-  fill: var(--white);
-  width: 8rem;
-}
-.logo-link {
-  margin-bottom: 1.5rem;
-  text-align: center;
-  width: 100%;
-}
-.logo-link:hover .logo path {
-  fill: var(--skyblue);
-}
-.social {
-  margin-bottom: 0.25rem;
-  order: 2;
-  text-align: center;
-  width: 100%;
-}
-.social a {
-  display: inline-block;
-  border-radius: 9999px;
-  padding: 0.5rem 0.65rem;
-}
-.social a:hover {
-  background: var(--pinkhighlight);
-  transition: 0.5s all cubic-bezier(0.4, 0, 0.2, 1);
-}
-.social a:hover #linkedin {
-  color: var(--pink);
-  fill: var(--pinklowlight);
-  transition: 0.5s all cubic-bezier(0.4, 0, 0.2, 1);
-}
-@media (min-width: 800px) {
-  footer {
-    flex-wrap: nowrap;
-  }
-  span {
-    order: 2;
-    text-align: left;
-    width: unset;
-  }
-  .logo-link {
-    margin-bottom: 0;
-    text-align: left;
-    width: unset;
-  }
-  .social {
-    margin-bottom: 0;
-    order: 3;
-    text-align: left;
-    width: unset;
-  }
-} */
 </style>

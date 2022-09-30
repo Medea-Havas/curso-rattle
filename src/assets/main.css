@@ -1,14 +1,31 @@
 @import './base.css';
 
 header,
-main,
 footer {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+.contentWrapper,
+.committeeWrapper {
   max-width: 1600px;
   margin: 0 auto;
   padding: 2rem;
 }
-main {
+.contentDescription p {
+  margin-bottom: 1rem;
+}
+h1 {
+  font-size: var(--xlarge);
+  line-height: var(--hregular);
+  margin-bottom: 1.875rem;
+  max-width: var(--wlarge);
+}
+main,
+main.contentWrapper {
   margin-bottom: 10rem;
+  padding-bottom: 10rem;
+  position: relative;
 }
 a {
   color: var(--pinklowlight);
@@ -27,6 +44,19 @@ a:hover {
 }
 .form-field input.error {
   border: 1px solid red;
+}
+.subtitle {
+  color: var(--pinkhighlight);
+  font-size: var(--xsmall);
+  letter-spacing: 0.5rem;
+  font-weight: 500;
+  margin-bottom: 1.875rem;
+  text-transform: uppercase;
+}
+@media (min-width: 1420px) {
+  h1 {
+    font-size: var(--xlarge);
+  }
 }
 @media (max-width: 800px) {
   header {
